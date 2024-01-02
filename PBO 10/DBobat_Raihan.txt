@@ -1,0 +1,163 @@
+Microsoft Windows [Version 10.0.22621.2861]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>c:
+
+C:\Windows\System32>cd /d C:\
+
+C:\>cd xampp
+
+C:\xampp>cd my sql
+The system cannot find the path specified.
+
+C:\xampp>cd bin
+The system cannot find the path specified.
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database raihan_klinik;
+ERROR 1007 (HY000): Can't create database 'raihan_klinik'; database exists
+MariaDB [(none)]> create database rb_klinik
+    -> Ctrl-C -- exit!
+Bye
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database rb_klinik;
+ERROR 1007 (HY000): Can't create database 'rb_klinik'; database exists
+MariaDB [(none)]> use rb_klinik
+Database changed
+MariaDB [rb_klinik]> show tables;
++---------------------+
+| Tables_in_rb_klinik |
++---------------------+
+| obat                |
++---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [rb_klinik]> Ctrl-C -- exit!
+Bye
+
+C:\xampp\mysql\bin>/c
+'/c' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\mysql\bin>\c
+'\c' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\mysql\bin>create table rb_obat;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create table rb_obat;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use rb_klinik
+Database changed
+MariaDB [rb_klinik]> create table rb_obat;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [rb_klinik]> create table rb_obat(
+    -> id int primary key auto_increment,
+    -> kdobat varchar(10) unique,
+    -> nama varchar(100),
+    -> berat varchar(10),
+    -> bentuk varchar(50));
+Query OK, 0 rows affected (0.050 sec)
+
+MariaDB [rb_klinik]> show tables;
++---------------------+
+| Tables_in_rb_klinik |
++---------------------+
+| obat                |
+| rb_obat             |
++---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [rb_klinik]> insert into rb_obat(kdobat,nama,berat,bentuk)values('501','oskadon','10mg','tablet');
+Query OK, 1 row affected (0.055 sec)
+
+MariaDB [rb_klinik]> insert into rb_obat(kdobat,nama,berat,bentuk)values('502','antimo','15mg','kapsul');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [rb_klinik]> insert into rb_obat(kdobat,nama,berat,bentuk)values('503','entrostop','9mg','tablet');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [rb_klinik]> insert into rb_obat(kdobat,nama,berat,bentuk)values('504','milanta','9mg','liquid');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [rb_klinik]> insert into rb_obat(kdobat,nama,berat,bentuk)values('505','tolakangin','20mg','liquid');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [rb_klinik]> select*from rb_obat;
++----+--------+------------+-------+--------+
+| id | kdobat | nama       | berat | bentuk |
++----+--------+------------+-------+--------+
+|  1 | 501    | oskadon    | 10mg  | tablet |
+|  2 | 502    | antimo     | 15mg  | kapsul |
+|  3 | 503    | entrostop  | 9mg   | tablet |
+|  4 | 504    | milanta    | 9mg   | liquid |
+|  5 | 505    | tolakangin | 20mg  | liquid |
++----+--------+------------+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [rb_klinik]> update rb_obat set nama='procold'where id='5';
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [rb_klinik]> select*from rb_obat;
++----+--------+-----------+-------+--------+
+| id | kdobat | nama      | berat | bentuk |
++----+--------+-----------+-------+--------+
+|  1 | 501    | oskadon   | 10mg  | tablet |
+|  2 | 502    | antimo    | 15mg  | kapsul |
+|  3 | 503    | entrostop | 9mg   | tablet |
+|  4 | 504    | milanta   | 9mg   | liquid |
+|  5 | 505    | procold   | 20mg  | liquid |
++----+--------+-----------+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [rb_klinik]> delete from rb_obat where id='5';
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [rb_klinik]> select*from rb_obat;
++----+--------+-----------+-------+--------+
+| id | kdobat | nama      | berat | bentuk |
++----+--------+-----------+-------+--------+
+|  1 | 501    | oskadon   | 10mg  | tablet |
+|  2 | 502    | antimo    | 15mg  | kapsul |
+|  3 | 503    | entrostop | 9mg   | tablet |
+|  4 | 504    | milanta   | 9mg   | liquid |
++----+--------+-----------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [rb_klinik]>
